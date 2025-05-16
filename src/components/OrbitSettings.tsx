@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-type OrbitType = 'Sun-synchronous' | 'Nonpolar'
+type OrbitType = 'Sun-synchronous' | 'Non-polar'
 
 const OrbitSettings = ( ) => {
     const [orbitType, setOrbitType] = useState<OrbitType>('Sun-synchronous')
