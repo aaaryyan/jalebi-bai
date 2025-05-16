@@ -5,7 +5,7 @@ This project was built for Hackathon ’25 in response to the challenge of visua
 
 ---
 
-## 🔭 Overview
+## Overview
 
 **Space Handshakes** allows users to simulate the behavior of a beacon satellite in either sun-synchronous or non-polar orbits, and calculate its communication events with relay satellites over a 24-hour period. The tool provides an interactive visual representation of:
 
@@ -18,7 +18,7 @@ The simulation is simplified but grounded in basic orbital mechanics and communi
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **React** + **TypeScript** – for the frontend interface
 - **Vite** – as the build tool for faster development
@@ -27,7 +27,7 @@ The simulation is simplified but grounded in basic orbital mechanics and communi
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 - Selection between **Sun-synchronous** and **Non-polar** orbit types
 - Customizable parameters:
@@ -42,7 +42,7 @@ The simulation is simplified but grounded in basic orbital mechanics and communi
 
 ---
 
-## 🧠 How It Works
+## How It Works
 
 This simulation is built on a simplified model of circular low Earth orbits (LEO). At each timestep, the following are calculated:
 
@@ -55,10 +55,10 @@ All visual and data updates are dynamically rendered based on user input.
 
 ---
 
-## 🌐 Live Deployment
+## Live Deployment
 
 🔗 [https://jalebi-bai.vercel.app](https://jalebi-bai.vercel.app)  
 
 ---
 
-## 📁 Project Structure
+## Project Structure
