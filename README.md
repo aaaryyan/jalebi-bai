@@ -57,7 +57,7 @@ All visual and data updates are dynamically rendered based on user input.
 
 ## Live Deployment
 
-🔗 [https://space-cadet-five.vercel.app/](Vercel App)  
+🔗 [Vercel App](https://space-cadet-five.vercel.app/)  
 
 ---
 
@@ -73,6 +73,7 @@ src/
 ├── App.tsx
 ├── main.tsx
 ├── App.css
+
  ---
 
  ## Team
@@ -83,14 +84,14 @@ src/
 - **Nirbhay Singla**
 ---
 
-##Install
+## Install
 To run the project locally:
-'''bash git clone https://github.com/aaaryyan/jalebi-bai.git
+```bash git clone https://github.com/aaaryyan/jalebi-bai.git
 cd jalebi-bai
 npm install
 npm run dev
-'''
+```
 ---
 
-##License
-This project is open source under the MIT License.
+## License
+This project is open source under the [MIT License](https://github.com/aaaryyan/jalebi-bai/blob/7c2ef28f3743852fb2833a5fc24cd57f387abdac/LICENSE). 
