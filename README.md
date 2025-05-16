@@ -58,7 +58,6 @@ All visual and data updates are dynamically rendered based on user input.
 ## 🌐 Live Deployment
 
 🔗 [https://jalebi-bai.vercel.app](https://jalebi-bai.vercel.app)  
-*(Replace this with your actual domain if different)*
 
 ---
 
