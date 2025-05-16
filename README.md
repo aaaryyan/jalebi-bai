@@ -1,54 +1,65 @@
-# React + TypeScript + Vite
+# Space Handshakes – Hackathon ’25 Submission
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A real-time satellite communication simulation tool developed using React and TypeScript.  
+This project was built for Hackathon ’25 in response to the challenge of visualizing orbital handshakes between a beacon satellite and a relay constellation in low Earth orbit.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔭 Overview
 
-## Expanding the ESLint configuration
+**Space Handshakes** allows users to simulate the behavior of a beacon satellite in either sun-synchronous or non-polar orbits, and calculate its communication events with relay satellites over a 24-hour period. The tool provides an interactive visual representation of:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Orbital paths
+- Communication cone intersections
+- Handshake events
+- Blackout durations
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+The simulation is simplified but grounded in basic orbital mechanics and communication geometry.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🛠️ Technologies Used
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- **React** + **TypeScript** – for the frontend interface
+- **Vite** – as the build tool for faster development
+- **Node.js** + **npm** – for dependency and script management
+- **CSS** – for styling (custom, extendable to frameworks)
+
+---
+
+## ✨ Key Features
+
+- Selection between **Sun-synchronous** and **Non-polar** orbit types
+- Customizable parameters:
+  - Altitude (in km)
+  - Local Solar Time (for Sun-synchronous orbits)
+  - Inclination (for Non-polar orbits)
+- 24-hour orbit simulation in discrete time steps
+- Real-time calculation of:
+  - Number of communication handshakes
+  - Duration and frequency of communication blackouts
+- Modular and extendable component-based architecture
+
+---
+
+## 🧠 How It Works
+
+This simulation is built on a simplified model of circular low Earth orbits (LEO). At each timestep, the following are calculated:
+
+- Satellite position using orbital period and angular motion
+- Coverage cones for communication
+- Cone intersection checks to determine handshakes
+- Time windows where no communication occurs (blackouts)
+
+All visual and data updates are dynamically rendered based on user input.
+
+---
+
+## 🌐 Live Deployment
+
+🔗 [https://jalebi-bai.vercel.app](https://jalebi-bai.vercel.app)  
+*(Replace this with your actual domain if different)*
+
+---
+
+## 📁 Project Structure
