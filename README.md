@@ -62,3 +62,35 @@ All visual and data updates are dynamically rendered based on user input.
 ---
 
 ## Project Structure
+src/
+├── components/
+│ ├── OrbitSettings.tsx
+│ ├── SimulationVisualizer.tsx
+│ └── StatsPanel.tsx
+├── logic/
+│ ├── orbitMath.ts
+│ └── handshakeSim.ts
+├── App.tsx
+├── main.tsx
+├── App.css
+ ---
+
+ ## Team
+- **Aaryan Mishra**
+- **Mohammad Kaif**
+- **Taskin Saadman**
+- **Keshav Beswal**
+- **Nirbhay Singla**
+---
+
+##Install
+To run the project locally:
+'''bash git clone https://github.com/aaaryyan/jalebi-bai.git
+cd jalebi-bai
+npm install
+npm run dev
+'''
+---
+
+##License
+This project is open source under the MIT License.
