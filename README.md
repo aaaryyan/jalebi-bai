@@ -57,7 +57,7 @@ All visual and data updates are dynamically rendered based on user input.
 
 ## Live Deployment
 
-🔗 [https://jalebi-bai.vercel.app](https://jalebi-bai.vercel.app)  
+🔗 [https://space-cadet-five.vercel.app/](Vercel App)  
 
 ---
 
