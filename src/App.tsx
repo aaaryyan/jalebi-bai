@@ -14,28 +14,30 @@ const App: React.FC = () => {
   const [params, setParams] = useState<OrbitParams>({
     orbitType: 'Sun-synchronous',
     altitude: 500,
-    inclination: 98.6,
+    inclination: 97.5,
     localSolarTime: '12:00',
   })
 
   const [relayPaths, setRelayPaths] = useState<Position[][]>([])
 
-  // === Parse and propagate all Iridium + Iridium-NEXT TLEs ===
+  // Load and propagate both IRIDIUM and IRIDIUM-NEXT TLE files
   useEffect(() => {
     const loadAllTLEs = async () => {
-      const fetchTLE = async (url: string) => {
-        const text = await (await fetch(url)).text()
+      const fetchTLE = async (url: string): Promise<Position[][]> => {
+        const text = await fetch(url).then(r => r.text())
         const lines = text.trim().split('\n')
-        const sats = []
+        const sats: Position[][] = []
 
         for (let i = 0; i < lines.length; i += 3) {
           const tle1 = lines[i + 1]
           const tle2 = lines[i + 2]
           if (!tle1 || !tle2) continue
           try {
-            sats.push(propagateTLE(parseTLE(tle1, tle2), 1440))
+            const satrec = parseTLE(tle1, tle2)
+            const path = propagateTLE(satrec, 1440)
+            sats.push(path)
           } catch (err) {
-            console.warn(`TLE parse error at line ${i}: ${err}`)
+            console.warn(`TLE parse error at line ${i}:`, err)
           }
         }
 
@@ -47,13 +49,13 @@ const App: React.FC = () => {
       setRelayPaths([...iridium, ...iridiumNext])
     }
 
-    loadAllTLEs()
+    loadAllTLEs().catch(console.error)
   }, [])
 
-  // === Beacon path based on user inputs ===
+  // Beacon orbit based on user parameters
   const beaconPath = useMemo(() => calculateOrbit(params), [params])
 
-  // === Handshake logic against all Iridium satellites ===
+  // Handshake computation against all relay satellites
   const handshakeResult = useMemo(
     () => calculateHandshakes(beaconPath, relayPaths),
     [beaconPath, relayPaths]
@@ -62,11 +64,10 @@ const App: React.FC = () => {
   return (
     <div className="app">
       <h1>🛰️ Space Satellite Handshakes Visualizer</h1>
-
       <OrbitSettings params={params} setParams={setParams} />
       <SimulationVisualizer
         beaconPath={beaconPath}
-        relayPath={relayPaths[0] || []} // TEMP: visualizing 1 relay path for now
+        relayPaths={relayPaths}
       />
       <StatsPanel result={handshakeResult} />
     </div>
@@ -74,5 +75,3 @@ const App: React.FC = () => {
 }
 
 export default App
-
-

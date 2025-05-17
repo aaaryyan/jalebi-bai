@@ -1,31 +1,58 @@
+// src/logic/tleUtils.ts
 import * as satellite from 'satellite.js'
+import { Position } from './orbitMath'
 
-export function parseTLE(tle1: string, tle2: string) {
-    return satellite.twoline2satrec(tle1, tle2)
+/**
+ * Extended position with geodetic info and ISO timestamp
+ */
+export interface TLEPosition extends Position {
+  lat: number
+  lon: number
+  alt: number
+  time: string
 }
 
-export function propagateTLE(satrec: satellite.SatRec, minutes: number = 1440){
-    const positions = []
-    const startTime = new Date()
+/** Parse two-line element sets into a SatRec */
+export function parseTLE(tle1: string, tle2: string): satellite.SatRec {
+  return satellite.twoline2satrec(tle1, tle2)
+}
 
-    for (let i = 0; i < minutes; i++) {
-        const time = new Date(startTime.getTime() + i * 60 * 1000)
-        const posVel = satellite.propagate(satrec, time)!
-        if (!posVel.position) continue;
+/**
+ * Propagate a SatRec for `minutes` minutes at 1-minute intervals.
+ * Returns an array of 3D ECI + geodetic positions with timestamps.
+ */
+export function propagateTLE(
+  satrec: satellite.SatRec,
+  minutes: number = 1440
+): TLEPosition[] {
+  const positions: TLEPosition[] = []
+  const startTime = new Date()
 
-        const gmst = satellite.gstime(time)
-        const geo = satellite.eciToGeodetic(posVel.position, gmst)
+  for (let i = 0; i < minutes; i++) {
+    const time = new Date(startTime.getTime() + i * 60 * 1000)
+    const posVel = satellite.propagate(satrec, time)
+    if (posVel === null || posVel.position === undefined) continue
 
-        positions.push({
-            x: posVel.position.x,
-            y: posVel.position.y,
-            z: posVel.position.z,
-            lat: satellite.degreesLat(geo.latitude),
-            lon: satellite.degreesLat(geo.latitude),
-            alt: geo.height,
-            time: time.toISOString(),
-            t: i*60,  // seconds since start
-        })
-    }
-    return positions;
+    const { position } = posVel
+    const gmst = satellite.gstime(time)
+    const geo   = satellite.eciToGeodetic(position, gmst)
+
+    positions.push({
+      // ECI
+      x: position.x,
+      y: position.y,
+      z: position.z,
+      t: i * 60,                   // seconds since start
+
+      // geodetic
+      lat: satellite.degreesLat(geo.latitude),
+      lon: satellite.degreesLong(geo.longitude),  // fixed!
+      alt: geo.height,
+
+      // ISO timestamp
+      time: time.toISOString(),
+    })
+  }
+
+  return positions
 }

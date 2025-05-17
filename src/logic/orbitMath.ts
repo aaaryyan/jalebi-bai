@@ -9,8 +9,8 @@ export interface Position {
 }
 
 /**
- * Given orbit parameters, calculate x and y positions over a full orbit duration
- * Simplified: Earth at center (0, 0), orbit is circular
+ * Given orbit parameters, calculate x, y, z positions
+ * over a full orbit duration (circular, Earth-centered).
  */
 export function calculateOrbit(params: OrbitParams): Position[] {
   const radius = 6371 + params.altitude // Earth radius + altitude in km
@@ -31,6 +31,6 @@ export function calculateOrbit(params: OrbitParams): Position[] {
 
     positions.push({ x, y, z, t })
   }
-  
+
   return positions
 }
