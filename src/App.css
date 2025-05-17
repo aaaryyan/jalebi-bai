@@ -1,30 +1,72 @@
+/* Space Satellite Handshakes Visualiser - Satellite Data Interface Theme */
+
+:root {
+  --primary-bg: #0a1120;
+  --secondary-bg: #151e32;
+  --accent: #4fd1c5;
+  --accent-light: #7fffd4;
+  --text-main: #e6eaf3;
+  --text-muted: #8fa1b3;
+  --card-bg: #1c253b;
+  --border-radius: 1.2rem;
+  --shadow: 0 6px 32px 0 rgba(0,0,0,0.22);
+  --grid-line: rgba(79,209,197,0.08);
+  --panel-bg: #18213a;
+  --panel-border: #25304a;
+}
+
+body {
+  background: linear-gradient(135deg, var(--primary-bg) 60%, #16203a 100%);
+  color: var(--text-main);
+  font-family: 'Segoe UI', 'Roboto Mono', 'Arial', monospace, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  letter-spacing: 0.02em;
+  overflow-x: hidden;
+}
+
 #root {
-  max-width: 1280px;
+  max-width: 980px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: var(--secondary-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  border: 1.5px solid var(--panel-border);
+  position: relative;
+}
+
+h1 {
+  color: var(--accent);
+  font-size: 2.6rem;
+  margin-bottom: 2.2rem;
+  letter-spacing: 2px;
+  font-family: 'Roboto Mono', 'Segoe UI', Arial, monospace;
+  text-shadow: 0 2px 16px #1c253b88;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
+  height: 4.5em;
+  padding: 0.7em;
   will-change: filter;
-  transition: filter 300ms;
+  transition: filter 300ms, transform 200ms;
+  border-radius: 50%;
+  background: rgba(79, 209, 197, 0.09);
+  margin-bottom: 1.2rem;
+  border: 1.5px solid var(--accent);
+  box-shadow: 0 2px 12px 0 rgba(79,209,197,0.08);
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em var(--accent));
+  transform: scale(1.08) rotate(-2deg);
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
 @keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg);}
+  to { transform: rotate(360deg);}
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -34,9 +76,77 @@
 }
 
 .card {
-  padding: 2em;
+  background: var(--card-bg);
+  padding: 2.2em 2em;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  margin: 1.5em 0;
+  text-align: left;
+  border: 1.5px solid var(--panel-border);
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    135deg,
+    transparent,
+    transparent 38px,
+    var(--grid-line) 39px,
+    transparent 40px
+  );
+  pointer-events: none;
+  z-index: 0;
 }
 
 .read-the-docs {
-  color: #888;
+  color: var(--text-muted);
+  font-size: 1.08em;
+  margin-top: 2em;
+  font-family: 'Roboto Mono', 'Segoe UI', Arial, monospace;
+}
+
+button, input, select {
+  background: var(--panel-bg);
+  color: var(--text-main);
+  border: 1.5px solid var(--accent);
+  border-radius: 0.6em;
+  padding: 0.7em 1.2em;
+  margin: 0.3em 0.5em;
+  font-size: 1em;
+  font-family: 'Roboto Mono', 'Segoe UI', Arial, monospace;
+  transition: background 0.2s, border 0.2s, color 0.2s;
+  box-shadow: 0 1px 6px 0 rgba(79,209,197,0.06);
+}
+
+button:hover, input:focus, select:focus {
+  background: var(--accent);
+  color: #0a1120;
+  border-color: var(--accent-light);
+  outline: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: var(--secondary-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+  border: 2px solid var(--secondary-bg);
+}
+
+@media (max-width: 700px) {
+  #root {
+    padding: 1.2rem 0.2rem;
+    max-width: 100vw;
+  }
+  .card {
+    padding: 1.2em 0.7em;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
 }
