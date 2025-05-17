@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
+import { OrbitParams } from '../types'
 
+interface OrbitSettingsProps {
+  params: OrbitParams;
+  setParams: React.Dispatch<React.SetStateAction<OrbitParams>>;
+}
 type OrbitType = 'Sun-synchronous' | 'Non-polar'
 
-const OrbitSettings = () => {
+const OrbitSettings: React.FC<OrbitSettingsProps> = ({ params, setParams }) => {
   const [orbitType, setOrbitType] = useState<OrbitType>('Sun-synchronous')
   const [altitude, setAltitude] = useState(500)       // km
   const [localSolarTime, setLocalSolarTime] = useState('12:00')
