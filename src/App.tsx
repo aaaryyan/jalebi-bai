@@ -1,5 +1,4 @@
 // src/App.tsx
-
 import React, { useState, useMemo, useEffect } from 'react'
 import OrbitSettings from './components/OrbitSettings'
 import SimulationVisualizer from './components/SimulationVisualiser'
@@ -32,12 +31,19 @@ const App: React.FC = () => {
           const tle1 = lines[i + 1]
           const tle2 = lines[i + 2]
           if (!tle1 || !tle2) continue
+
           try {
             const satrec = parseTLE(tle1, tle2)
             const path = propagateTLE(satrec, 1440)
+
+            if (!Number.isFinite(path[0]?.x)) {
+              console.warn(`Skipping invalid satellite at line ${i}:`, path[0])
+              continue
+            }
+
             sats.push(path)
           } catch (err) {
-            console.warn(`TLE parse error at line ${i}:`, err)
+            console.warn(`TLE parse/propagation error at line ${i}:`, err)
           }
         }
 
@@ -52,19 +58,23 @@ const App: React.FC = () => {
     loadAllTLEs().catch(console.error)
   }, [])
 
-  // Beacon orbit based on user parameters
+  // Beacon orbit path (local simulation)
   const beaconPath = useMemo(() => calculateOrbit(params), [params])
 
-  // Handshake computation against all relay satellites
-  const handshakeResult = useMemo(
-    () => calculateHandshakes(beaconPath, relayPaths),
-    [beaconPath, relayPaths]
-  )
-  console.log("Relay Paths Length:", relayPaths.length)
-  console.log("Beacon Path Length:", beaconPath.length)
-  console.log("Sample Relay Path [0]:", relayPaths[0]?.slice(0, 5))
-  console.log("Sample Beacon Path:", beaconPath.slice(0, 5))
-  console.log("Handshake Result:", handshakeResult)
+  // Calculate handshakes between beacon and real Iridium satellites
+  const handshakeResult = useMemo(() => {
+    return calculateHandshakes(beaconPath, relayPaths)
+  }, [beaconPath, relayPaths])
+
+  // Debug Logging
+  useEffect(() => {
+    console.log("Relay Paths Loaded:", relayPaths.length)
+    if (relayPaths.length > 0) {
+      console.log("Sample Relay Path [0]:", relayPaths[0].slice(0, 5))
+    }
+    console.log("Beacon Path Sample:", beaconPath.slice(0, 5))
+    console.log("Handshake Result:", handshakeResult)
+  }, [beaconPath, relayPaths, handshakeResult])
 
   return (
     <div className="app">
