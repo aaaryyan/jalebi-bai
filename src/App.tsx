@@ -60,6 +60,11 @@ const App: React.FC = () => {
     () => calculateHandshakes(beaconPath, relayPaths),
     [beaconPath, relayPaths]
   )
+  console.log("Relay Paths Length:", relayPaths.length)
+  console.log("Beacon Path Length:", beaconPath.length)
+  console.log("Sample Relay Path [0]:", relayPaths[0]?.slice(0, 5))
+  console.log("Sample Beacon Path:", beaconPath.slice(0, 5))
+  console.log("Handshake Result:", handshakeResult)
 
   return (
     <div className="app">

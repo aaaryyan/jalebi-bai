@@ -60,15 +60,7 @@ const OrbitSettings: React.FC<Props> = ({ params, setParams }) => {
           />
         </label>
       )}
-      <br /><br />
-
-      <pre style={{
-        background: '#1e293b',
-        color: '#f8fafc',
-        padding: '1rem',
-      }}>
-        DEBUG: {JSON.stringify(params, null, 2)}
-      </pre>
+      <br /><br />   
     </section>
   )
 }
