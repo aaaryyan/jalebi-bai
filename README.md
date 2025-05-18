@@ -61,8 +61,6 @@ These parameters define a beacon satellite in a sun-synchronous LEO orbit that p
 🔗 [Vercel App](https://space-cadet-five.vercel.app/)  
 
 ---
-
-## Project Structure
 ## Project Structure
 src/
 ├── components/
