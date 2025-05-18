@@ -5,7 +5,7 @@ This project was built for Hackathon ’25 in response to the challenge of visua
 
 ---
 
-## Overview
+## Overview 
 
 **Space Handshakes** allows users to simulate the behavior of a beacon satellite in either sun-synchronous or non-polar orbits, and calculate its communication events with relay satellites over a 24-hour period. The tool provides an interactive visual representation of:
 
