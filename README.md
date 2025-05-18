@@ -7,12 +7,12 @@ This project was built for Hackathon ’25 in response to the challenge of visua
 
 ## Overview 
 
-**Space Handshakes** allows users to simulate the behavior of a beacon satellite in either sun-synchronous or non-polar orbits, and calculate its communication events with relay satellites over a 24-hour period. The tool provides an interactive visual representation of:
+**Space Handshakes** simulates the behavior of a beacon satellite in either sun-synchronous or non-polar orbits and calculates its communication events with relay satellites over a 24-hour period. The tool provides an interactive visual representation of:
 
-- Orbital paths
-- Communication cone intersections
-- Handshake events
-- Blackout durations
+- Orbital paths  
+- Communication cone intersections  
+- Handshake events  
+- Blackout durations  
 
 The simulation is simplified but grounded in basic orbital mechanics and communication geometry.
 
@@ -20,25 +20,25 @@ The simulation is simplified but grounded in basic orbital mechanics and communi
 
 ## Technologies Used
 
-- **React** + **TypeScript** – for the frontend interface
-- **Vite** – as the build tool for faster development
-- **Node.js** + **npm** – for dependency and script management
-- **CSS** – for styling (custom, extendable to frameworks)
+- **React** + **TypeScript** – for the frontend interface  
+- **Vite** – as the build tool for faster development  
+- **Node.js** + **npm** – for dependency and script management  
+- **CSS** – for styling (custom, extendable to frameworks)  
 
 ---
 
 ## Key Features
 
-- Selection between **Sun-synchronous** and **Non-polar** orbit types
-- Customizable parameters:
-  - Altitude (in km)
-  - Local Solar Time (for Sun-synchronous orbits)
-  - Inclination (for Non-polar orbits)
-- 24-hour orbit simulation in discrete time steps
-- Real-time calculation of:
-  - Number of communication handshakes
-  - Duration and frequency of communication blackouts
-- Modular and extendable component-based architecture
+- Selection between **Sun-synchronous** and **Non-polar** orbit types  
+- Customizable parameters:  
+  - Altitude (in km)  
+  - Local Solar Time (for Sun-synchronous orbits)  
+  - Inclination (for Non-polar orbits)  
+- 24-hour orbit simulation in discrete time steps  
+- Real-time calculation of:  
+  - Number of communication handshakes  
+  - Duration and frequency of communication blackouts  
+- Modular and extendable component-based architecture  
 
 ---
 
@@ -46,10 +46,10 @@ The simulation is simplified but grounded in basic orbital mechanics and communi
 
 This simulation is built on a simplified model of circular low Earth orbits (LEO). At each timestep, the following are calculated:
 
-- Satellite position using orbital period and angular motion
-- Coverage cones for communication
-- Cone intersection checks to determine handshakes
-- Time windows where no communication occurs (blackouts)
+- Satellite position using orbital period and angular motion  
+- Coverage cones for communication  
+- Cone intersection checks to determine handshakes  
+- Time windows where no communication occurs (blackouts)  
 
 All visual and data updates are dynamically rendered based on user input.
 
@@ -61,6 +61,7 @@ All visual and data updates are dynamically rendered based on user input.
 
 ---
 
+## Project Structure
 ## Project Structure
 src/
 ├── components/
