@@ -43,19 +43,22 @@ The simulation simplifies orbital mechanics while preserving geometric accuracy 
 ---
 
 ## Simulation Parameters
--Orbit Type       : Sun-synchronous
--Altitude         : 500 km
--Local Solar Time : 12:00 PM
-These parameters define a beacon satellite in a sun-synchronous LEO orbit that passes the equator at 12:00 PM local solar time during its descending node.
+
+- **Orbit Type**: Sun-synchronous  
+- **Altitude**: 500 km  
+- **Local Solar Time**: 12:00 PM  
+
+> These parameters define a beacon satellite in a sun-synchronous LEO orbit that passes the equator at 12:00 PM local solar time during its descending node.
 
 ---
 
 ## Simulation Outputs
--Total Handshakes       : 22
--Total Blackouts        : 22
--Total Blackout Time    : 23.20 hours
--Average Blackout Time  : 1.05 hours
--Communication Uptime   : 3.3%
+
+- **Total Handshakes**: 22  
+- **Total Blackouts**: 22  
+- **Total Blackout Time**: 23.20 hours  
+- **Average Blackout Time**: 1.05 hours  
+- **Communication Uptime**: 3.3%
 ## Live Deployment
 
 🔗 [Vercel App](https://space-cadet-five.vercel.app/)  
